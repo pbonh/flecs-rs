@@ -1,5 +1,6 @@
 #![allow(clippy::tabs_in_doc_comments)]
 use std::alloc::Layout;
+use std::fmt;
 
 use crate::cache::WorldInfoCache;
 use crate::*;
@@ -586,6 +587,12 @@ impl World {
 			)
 		};
 	}
+}
+
+impl fmt::Debug for World {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        self.to_json().fmt(f)
+    }
 }
 
 #[cfg(test)]
